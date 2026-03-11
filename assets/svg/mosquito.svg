@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none" stroke="#2E7D32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="pest-icon pest-mosquito">
+  <style>
+    .mosq-float { animation: mosquitoFloat 2.2s ease-in-out infinite; transform-origin: 50px 60px; }
+    .mosq-wing-l { animation: wingBeat 0.3s ease-in-out infinite alternate; transform-origin: 38px 42px; }
+    .mosq-wing-r { animation: wingBeatR 0.3s ease-in-out infinite alternate; transform-origin: 62px 42px; }
+    @keyframes mosquitoFloat {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-6px); }
+    }
+    @keyframes wingBeat {
+      from { transform: rotate(-15deg) scaleY(1); }
+      to   { transform: rotate(5deg) scaleY(0.7); }
+    }
+    @keyframes wingBeatR {
+      from { transform: rotate(15deg) scaleY(1); }
+      to   { transform: rotate(-5deg) scaleY(0.7); }
+    }
+  </style>
+  <g class="mosq-float">
+    <!-- Proboscis -->
+    <path d="M50 22 L50 4" stroke="#C62828" stroke-width="1.5"/>
+    <circle cx="50" cy="3" r="1.5" fill="#C62828" stroke="none"/>
+    <!-- Antennae -->
+    <path d="M44 18 Q36 10 30 8" stroke="#1B5E20" stroke-width="1.2"/>
+    <path d="M56 18 Q64 10 70 8" stroke="#1B5E20" stroke-width="1.2"/>
+    <!-- Head -->
+    <circle cx="50" cy="22" r="8" fill="#C8E6C9" stroke="#2E7D32"/>
+    <circle cx="47" cy="20" r="2" fill="#1A1A1A"/>
+    <circle cx="53" cy="20" r="2" fill="#1A1A1A"/>
+    <!-- Thorax -->
+    <ellipse cx="50" cy="36" rx="9" ry="10" fill="#A5D6A7" stroke="#2E7D32"/>
+    <!-- Wings -->
+    <ellipse cx="30" cy="36" rx="16" ry="6" fill="rgba(200,230,200,0.5)" stroke="#66BB6A" stroke-width="1.2" class="mosq-wing-l"/>
+    <ellipse cx="70" cy="36" rx="16" ry="6" fill="rgba(200,230,200,0.5)" stroke="#66BB6A" stroke-width="1.2" class="mosq-wing-r"/>
+    <!-- Wing veins -->
+    <path d="M38 34 Q34 32 20 34" stroke="#66BB6A" stroke-width="0.8" class="mosq-wing-l"/>
+    <path d="M62 34 Q66 32 80 34" stroke="#66BB6A" stroke-width="0.8" class="mosq-wing-r"/>
+    <!-- Legs left -->
+    <path d="M42 38 Q30 44 22 42" stroke="#1B5E20" stroke-width="1.4"/>
+    <path d="M42 42 Q28 50 18 52" stroke="#1B5E20" stroke-width="1.4"/>
+    <path d="M42 46 Q30 56 22 62" stroke="#1B5E20" stroke-width="1.4"/>
+    <!-- Legs right -->
+    <path d="M58 38 Q70 44 78 42" stroke="#1B5E20" stroke-width="1.4"/>
+    <path d="M58 42 Q72 50 82 52" stroke="#1B5E20" stroke-width="1.4"/>
+    <path d="M58 46 Q70 56 78 62" stroke="#1B5E20" stroke-width="1.4"/>
+    <!-- Abdomen (tapered) -->
+    <path d="M42 46 Q38 60 40 76 Q43 90 50 96 Q57 90 60 76 Q62 60 58 46 Z" fill="#C8E6C9" stroke="#2E7D32"/>
+    <!-- Abdomen stripes -->
+    <path d="M41 56 Q50 54 59 56" stroke="#2E7D32" stroke-width="1"/>
+    <path d="M40 64 Q50 62 60 64" stroke="#2E7D32" stroke-width="1"/>
+    <path d="M40 72 Q50 70 60 72" stroke="#2E7D32" stroke-width="1"/>
+    <path d="M41 80 Q50 78 59 80" stroke="#2E7D32" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" fill="none" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pest-icon pest-cockroach">
+  <style>
+    .antenna-l { animation: antennaL 2.5s ease-in-out infinite; transform-origin: 42px 20px; }
+    .antenna-r { animation: antennaR 2.5s ease-in-out infinite; transform-origin: 58px 20px; }
+    @keyframes antennaL {
+      0%,100% { transform: rotate(0deg); }
+      50%     { transform: rotate(-12deg); }
+    }
+    @keyframes antennaR {
+      0%,100% { transform: rotate(0deg); }
+      50%     { transform: rotate(12deg); }
+    }
+  </style>
+  <!-- Antennae -->
+  <path d="M42 20 Q30 10 22 4" class="antenna-l" stroke="#1B5E20" stroke-width="1.5"/>
+  <path d="M58 20 Q70 10 78 4" class="antenna-r" stroke="#1B5E20" stroke-width="1.5"/>
+  <circle cx="22" cy="4" r="2" fill="#C62828" stroke="none" class="antenna-l"/>
+  <circle cx="78" cy="4" r="2" fill="#C62828" stroke="none" class="antenna-r"/>
+  <!-- Head -->
+  <ellipse cx="50" cy="22" rx="12" ry="9" fill="#C8E6C9" stroke="#2E7D32"/>
+  <!-- Eyes -->
+  <circle cx="44" cy="20" r="2.5" fill="#1A1A1A"/>
+  <circle cx="56" cy="20" r="2.5" fill="#1A1A1A"/>
+  <circle cx="45" cy="19" r="0.8" fill="white"/>
+  <circle cx="57" cy="19" r="0.8" fill="white"/>
+  <!-- Pronotum (shield) -->
+  <ellipse cx="50" cy="35" rx="16" ry="10" fill="#A5D6A7" stroke="#2E7D32"/>
+  <!-- Wings / body -->
+  <path d="M34 38 Q20 45 22 62 Q24 72 50 76 Q76 72 78 62 Q80 45 66 38 Z" fill="#C8E6C9" stroke="#2E7D32"/>
+  <!-- Body segments -->
+  <line x1="34" y1="50" x2="66" y2="50" stroke="#2E7D32" stroke-width="1.2"/>
+  <line x1="33" y1="60" x2="67" y2="60" stroke="#2E7D32" stroke-width="1.2"/>
+  <line x1="36" y1="70" x2="64" y2="70" stroke="#2E7D32" stroke-width="1.2"/>
+  <!-- Legs left -->
+  <line x1="34" y1="46" x2="14" y2="40" stroke="#1B5E20" stroke-width="1.8"/>
+  <line x1="33" y1="56" x2="12" y2="54" stroke="#1B5E20" stroke-width="1.8"/>
+  <line x1="35" y1="65" x2="16" y2="70" stroke="#1B5E20" stroke-width="1.8"/>
+  <!-- Legs right -->
+  <line x1="66" y1="46" x2="86" y2="40" stroke="#1B5E20" stroke-width="1.8"/>
+  <line x1="67" y1="56" x2="88" y2="54" stroke="#1B5E20" stroke-width="1.8"/>
+  <line x1="65" y1="65" x2="84" y2="70" stroke="#1B5E20" stroke-width="1.8"/>
+  <!-- Cerci (tails) -->
+  <path d="M46 76 Q44 86 40 90" stroke="#1B5E20" stroke-width="1.5" fill="none"/>
+  <path d="M54 76 Q56 86 60 90" stroke="#1B5E20" stroke-width="1.5" fill="none"/>
+</svg>

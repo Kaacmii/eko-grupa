@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 120" fill="none" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pest-icon pest-wasp">
+  <style>
+    .wasp-wing-l { animation: waspWingL 0.25s ease-in-out infinite alternate; transform-origin: 42px 38px; }
+    .wasp-wing-r { animation: waspWingR 0.25s ease-in-out infinite alternate; transform-origin: 68px 38px; }
+    .wasp-body   { animation: waspHover 2s ease-in-out infinite; transform-origin: 55px 60px; }
+    @keyframes waspWingL {
+      from { transform: rotate(-20deg); opacity:0.9; }
+      to   { transform: rotate(5deg);  opacity:0.6; }
+    }
+    @keyframes waspWingR {
+      from { transform: rotate(20deg);  opacity:0.9; }
+      to   { transform: rotate(-5deg);  opacity:0.6; }
+    }
+    @keyframes waspHover {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-5px); }
+    }
+  </style>
+  <g class="wasp-body">
+    <!-- Antennae -->
+    <path d="M48 18 Q40 8 34 4" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M62 18 Q70 8 76 4" stroke="#1B5E20" stroke-width="1.5"/>
+    <circle cx="34" cy="4" r="2" fill="#FF8F00" stroke="none"/>
+    <circle cx="76" cy="4" r="2" fill="#FF8F00" stroke="none"/>
+    <!-- Head -->
+    <circle cx="55" cy="20" r="13" fill="#C8E6C9" stroke="#2E7D32"/>
+    <circle cx="49" cy="17" r="3" fill="#1A1A1A"/>
+    <circle cx="61" cy="17" r="3" fill="#1A1A1A"/>
+    <circle cx="50" cy="16" r="1" fill="white"/>
+    <circle cx="62" cy="16" r="1" fill="white"/>
+    <!-- Mandibles -->
+    <path d="M50 30 Q47 34 44 32" stroke="#FF8F00" stroke-width="1.5"/>
+    <path d="M60 30 Q63 34 66 32" stroke="#FF8F00" stroke-width="1.5"/>
+    <!-- Thorax -->
+    <ellipse cx="55" cy="46" rx="14" ry="12" fill="#A5D6A7" stroke="#2E7D32"/>
+    <!-- Wings -->
+    <path d="M42 38 Q22 28 18 38 Q20 48 42 46 Z" fill="rgba(200,230,200,0.55)" stroke="#66BB6A" stroke-width="1.2" class="wasp-wing-l"/>
+    <path d="M68 38 Q88 28 92 38 Q90 48 68 46 Z" fill="rgba(200,230,200,0.55)" stroke="#66BB6A" stroke-width="1.2" class="wasp-wing-r"/>
+    <!-- Wing veins -->
+    <line x1="42" y1="40" x2="22" y2="36" stroke="#66BB6A" stroke-width="0.8" class="wasp-wing-l"/>
+    <line x1="68" y1="40" x2="88" y2="36" stroke="#66BB6A" stroke-width="0.8" class="wasp-wing-r"/>
+    <!-- Legs left -->
+    <path d="M43 44 Q32 50 24 46" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M43 48 Q30 58 20 58" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M44 52 Q34 64 26 68" stroke="#1B5E20" stroke-width="1.5"/>
+    <!-- Legs right -->
+    <path d="M67 44 Q78 50 86 46" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M67 48 Q80 58 90 58" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M66 52 Q76 64 84 68" stroke="#1B5E20" stroke-width="1.5"/>
+    <!-- Petiole (waist) -->
+    <path d="M55 58 Q55 64 55 68" stroke="#2E7D32" stroke-width="3"/>
+    <!-- Abdomen with yellow stripes -->
+    <ellipse cx="55" cy="86" rx="16" ry="22" fill="#C8E6C9" stroke="#2E7D32"/>
+    <!-- Stripes (alternating yellow) -->
+    <path d="M40 76 Q55 74 70 76 Q70 80 55 80 Q40 80 40 76 Z" fill="#FF8F00" stroke="none" opacity="0.7"/>
+    <path d="M39 84 Q55 82 71 84 Q71 88 55 88 Q39 88 39 84 Z" fill="#FF8F00" stroke="none" opacity="0.7"/>
+    <path d="M40 92 Q55 90 70 92 Q70 96 55 96 Q40 96 40 92 Z" fill="#FF8F00" stroke="none" opacity="0.7"/>
+    <!-- Stinger -->
+    <path d="M55 108 L55 116" stroke="#C62828" stroke-width="2"/>
+    <polygon points="51,112 59,112 55,118" fill="#C62828" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120" fill="none" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pest-icon pest-ant">
+  <style>
+    .ant-body { animation: antWalk 1.8s ease-in-out infinite; transform-origin: 45px 60px; }
+    @keyframes antWalk {
+      0%,100% { transform: translateX(0); }
+      25%     { transform: translateX(2px); }
+      75%     { transform: translateX(-2px); }
+    }
+  </style>
+  <g class="ant-body">
+    <!-- Antennae -->
+    <path d="M38 18 Q28 8 22 2" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M52 18 Q62 8 68 2" stroke="#1B5E20" stroke-width="1.5"/>
+    <circle cx="22" cy="2" r="2.2" fill="#FF8F00" stroke="none"/>
+    <circle cx="68" cy="2" r="2.2" fill="#FF8F00" stroke="none"/>
+    <!-- Head -->
+    <circle cx="45" cy="20" r="12" fill="#C8E6C9" stroke="#2E7D32"/>
+    <circle cx="40" cy="17" r="2.5" fill="#1A1A1A"/>
+    <circle cx="50" cy="17" r="2.5" fill="#1A1A1A"/>
+    <circle cx="41" cy="16" r="0.8" fill="white"/>
+    <circle cx="51" cy="16" r="0.8" fill="white"/>
+    <!-- Mandibles -->
+    <path d="M38 28 Q34 32 32 30" stroke="#1B5E20" stroke-width="1.5"/>
+    <path d="M52 28 Q56 32 58 30" stroke="#1B5E20" stroke-width="1.5"/>
+    <!-- Thorax -->
+    <ellipse cx="45" cy="46" rx="10" ry="12" fill="#A5D6A7" stroke="#2E7D32"/>
+    <!-- Legs from thorax -->
+    <line x1="35" y1="40" x2="16" y2="32" stroke="#1B5E20" stroke-width="1.8"/>
+    <line x1="35" y1="47" x2="14" y2="47" stroke="#1B5E20" stroke-width="1.8"/>
+    <line x1="35" y1="54" x2="16" y2="62" stroke="#1B5E20" stroke-width="1.8"/>
+    <line x1="55" y1="40" x2="74" y2="32" stroke="#1B5E20" stroke-width="1.8"/>
+    <line x1="55" y1="47" x2="76" y2="47" stroke="#1B5E20" stroke-width="1.8"/>
+    <line x1="55" y1="54" x2="74" y2="62" stroke="#1B5E20" stroke-width="1.8"/>
+    <!-- Waist (petiole) -->
+    <path d="M45 58 Q45 64 45 66" stroke="#2E7D32" stroke-width="2.5"/>
+    <circle cx="45" cy="67" r="4" fill="#C8E6C9" stroke="#2E7D32"/>
+    <!-- Abdomen -->
+    <ellipse cx="45" cy="90" rx="14" ry="20" fill="#C8E6C9" stroke="#2E7D32"/>
+    <!-- Abdomen segments -->
+    <path d="M32 84 Q45 82 58 84" stroke="#2E7D32" stroke-width="1.2"/>
+    <path d="M31 92 Q45 90 59 92" stroke="#2E7D32" stroke-width="1.2"/>
+    <path d="M33 100 Q45 98 57 100" stroke="#2E7D32" stroke-width="1.2"/>
+  </g>
+</svg>
