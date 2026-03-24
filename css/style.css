@@ -1346,16 +1346,14 @@ address { font-style: normal; }
 /* Nav phones */
 .nav-phones {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
   flex-shrink: 0;
 }
 
 .nav-phone--mobile {
-  font-size: 0.78rem;
-  padding: 0.3rem 0.8rem;
-  color: var(--text-muted);
-  border-color: rgba(102,187,106,0.4);
+  font-size: 0.85rem;
 }
 
 .nav-phone--mobile:hover {
@@ -1479,7 +1477,6 @@ address { font-style: normal; }
     flex-wrap: wrap;
   }
   .call-cta-btn { flex: 1; }
-  .nav-phones { flex-direction: row; gap: 0.4rem; }
   .nav-phone--mobile { display: none; }
 }
 
@@ -1969,6 +1966,25 @@ address { font-style: normal; }
 
   .lightbox-prev { left: 0.5rem; }
   .lightbox-next { right: 0.5rem; }
+
+  /* Testimonijali — mobilni prikaz */
+  .testimonial-card {
+    padding: var(--space-md) var(--space-md);
+  }
+  .quote-mark {
+    font-size: 2.5rem;
+    top: -0.5rem;
+    left: -0.25rem;
+  }
+  .testimonial-quote p {
+    font-size: 0.95rem;
+    padding-top: 0.75rem;
+    padding-left: 1.25rem;
+    line-height: 1.6;
+  }
+  .testimonials-slider {
+    max-width: 100%;
+  }
 }
 
 /* ============================================================

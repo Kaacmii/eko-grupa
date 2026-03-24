@@ -442,16 +442,34 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       return;
     }
 
-    // Simulacija slanja — prikaz poruke o uspehu
+    // Slanje na Formspree — zameni VAŠA_FORMA_ID sa ID-jem sa formspree.io
+    const FORMSPREE = 'https://formspree.io/f/VAŠA_FORMA_ID';
+
     const submitBtn = form.querySelector('[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.innerHTML = '⌛ Slanje...';
 
-    setTimeout(() => {
-      form.hidden = true;
-      success.hidden = false;
-      success.focus();
-    }, 1000);
+    fetch(FORMSPREE, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(res => {
+      if (res.ok) {
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Zakaži besplatni uvid →';
+        alert('Greška pri slanju. Pozovite nas direktno: 013 333 033');
+      }
+    })
+    .catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Zakaži besplatni uvid →';
+      alert('Greška pri slanju. Pozovite nas direktno: 013 333 033');
+    });
   });
 })();
 
