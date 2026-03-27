@@ -393,32 +393,47 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
    8. KONTAKT FORMA — validacija + success poruka
    ============================================================ */
 (function initContactForm() {
+  const FORMSPREE = 'https://formspree.io/f/xbdpdrnq';
+
   const form    = $('#contact-form');
   const success = $('#form-success');
   if (!form) return;
 
+  // Sanitizacija — uklanja HTML tagove i višak razmaka
+  function sanitize(str) {
+    return str.trim().replace(/[<>]/g, '');
+  }
+
+  // Validacija jednog polja
   function validateField(input) {
-    const id = input.id;
-    const errorEl = document.getElementById('error-' + id.replace('field-', ''));
+    const errorEl = document.getElementById('error-' + input.id.replace('field-', ''));
+    const val = sanitize(input.value);
     let msg = '';
 
-    if (input.required && !input.value.trim()) {
+    if (input.required && !val) {
       msg = 'Ovo polje je obavezno.';
-    } else if (input.type === 'email' && input.value.trim()) {
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRe.test(input.value.trim())) msg = 'Unesite ispravnu email adresu.';
-    } else if (input.type === 'tel' && input.value.trim()) {
-      const telRe = /^[\d\s\+\-\/\(\)]{6,20}$/;
-      if (!telRe.test(input.value.trim())) msg = 'Unesite ispravan broj telefona.';
+    } else if (input.tagName === 'SELECT' && input.required && !val) {
+      msg = 'Izaberite vrstu usluge.';
+    } else if (input.type === 'tel' && val) {
+      // Dozvoljavamo cifre, razmake, +, -, /, zagrade; min 6, max 20 znakova
+      if (!/^[\d\s\+\-\/\(\)]{6,20}$/.test(val)) msg = 'Unesite ispravan broj telefona (npr. 063 123 4567).';
+    } else if (input.type === 'email' && val) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) msg = 'Unesite ispravnu email adresu.';
+    } else if (input.type === 'text' && input.required && val.length < 2) {
+      msg = 'Unesite najmanje 2 karaktera.';
     }
 
-    if (errorEl) errorEl.textContent = msg;
+    if (errorEl) {
+      errorEl.textContent = msg;
+      errorEl.hidden = !msg;
+    }
     input.classList.toggle('is-invalid', !!msg);
+    input.setAttribute('aria-invalid', !!msg);
     return !msg;
   }
 
-  // Inline validacija pri blur-u
-  $$('[required], [type="email"], [type="tel"]', form).forEach(input => {
+  // Inline validacija pri blur-u i ispravljanju greške
+  $$('input, select, textarea', form).forEach(input => {
     input.addEventListener('blur', () => validateField(input));
     input.addEventListener('input', () => {
       if (input.classList.contains('is-invalid')) validateField(input);
@@ -429,11 +444,13 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const fields = $$('[required], [type="email"], [type="tel"]', form);
+    // Validiraj sva polja i sanitizuj vrednosti pre slanja
     let valid = true;
-
-    fields.forEach(f => {
-      if (!validateField(f)) valid = false;
+    $$('input:not([type="hidden"]), select, textarea', form).forEach(f => {
+      f.value = sanitize(f.value);
+      if ((f.required || f.type === 'email' || f.type === 'tel') && !validateField(f)) {
+        valid = false;
+      }
     });
 
     if (!valid) {
@@ -442,12 +459,9 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
       return;
     }
 
-    // Slanje na Formspree — zameni VAŠA_FORMA_ID sa ID-jem sa formspree.io
-    const FORMSPREE = 'https://formspree.io/f/VAŠA_FORMA_ID';
-
     const submitBtn = form.querySelector('[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '⌛ Slanje...';
+    submitBtn.textContent = '⌛ Slanje...';
 
     fetch(FORMSPREE, {
       method: 'POST',
@@ -461,14 +475,14 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
         success.focus();
       } else {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Zakaži besplatni uvid →';
+        submitBtn.textContent = 'Zakaži besplatni uvid →';
         alert('Greška pri slanju. Pozovite nas direktno: 013 333 033');
       }
     })
     .catch(() => {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Zakaži besplatni uvid →';
-      alert('Greška pri slanju. Pozovite nas direktno: 013 333 033');
+      submitBtn.textContent = 'Zakaži besplatni uvid →';
+      alert('Nema internet veze. Pozovite nas direktno: 013 333 033');
     });
   });
 })();
