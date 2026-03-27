@@ -10,6 +10,124 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 /* ============================================================
+   0. LATINICA / ĆIRILICA — transliteracija + toggle
+   ============================================================ */
+
+// Globalno stanje pisma — koriste ga i drugi moduli
+const SCRIPT = { mode: localStorage.getItem('ekogr_script') || 'lat' };
+
+// Vraća string u trenutnom pismu (koristi se za JS-generisane tekstove)
+function t(str) {
+  return SCRIPT.mode === 'cyr' ? latinToCyrillic(str) : str;
+}
+
+function latinToCyrillic(text) {
+  // Digrams first, then singles
+  const map = [
+    ['lj','љ'],['nj','њ'],['dž','џ'],
+    ['Lj','Љ'],['Nj','Њ'],['Dž','Џ'],
+    ['LJ','Љ'],['NJ','Њ'],['DŽ','Џ'],
+    ['č','ч'],['ć','ћ'],['đ','ђ'],['š','ш'],['ž','ж'],
+    ['Č','Ч'],['Ć','Ћ'],['Đ','Ђ'],['Š','Ш'],['Ž','Ж'],
+    ['a','а'],['b','б'],['c','ц'],['d','д'],['e','е'],
+    ['f','ф'],['g','г'],['h','х'],['i','и'],['j','ј'],
+    ['k','к'],['l','л'],['m','м'],['n','н'],['o','о'],
+    ['p','п'],['r','р'],['s','с'],['t','т'],['u','у'],
+    ['v','в'],['z','з'],
+    ['A','А'],['B','Б'],['C','Ц'],['D','Д'],['E','Е'],
+    ['F','Ф'],['G','Г'],['H','Х'],['I','И'],['J','Ј'],
+    ['K','К'],['L','Л'],['M','М'],['N','Н'],['O','О'],
+    ['P','П'],['R','Р'],['S','С'],['T','Т'],['U','У'],
+    ['V','В'],['Z','З'],
+  ];
+  let r = text;
+  for (const [l, c] of map) r = r.split(l).join(c);
+  return r;
+}
+
+// Transliteriše sve tekstualne čvorove unutar zadatog elementa
+function transliterateSubtree(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const tag = node.parentElement?.tagName;
+      if (['SCRIPT','STYLE','NOSCRIPT'].includes(tag)) return NodeFilter.FILTER_REJECT;
+      if (node.textContent.trim() === '') return NodeFilter.FILTER_SKIP;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+  nodes.forEach(n => { n.textContent = latinToCyrillic(n.textContent); });
+}
+
+const ScriptToggle = (function() {
+  const textCache = []; // { node, lat, cyr }
+  const attrCache = []; // { el, attr, lat, cyr }
+
+  function collectStatic() {
+    const skipAttrs = ['href','src','action','class','id','name','type','value'];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        const tag = parent?.tagName;
+        if (['SCRIPT','STYLE','NOSCRIPT'].includes(tag)) return NodeFilter.FILTER_REJECT;
+        // Preskočiti email i tel linkove
+        if (tag === 'A') {
+          const href = (parent.getAttribute('href') || '');
+          if (href.startsWith('mailto:') || href.startsWith('tel:')) return NodeFilter.FILTER_REJECT;
+        }
+        // Preskočiti dinamički sadržaj pest panela
+        if (parent?.closest('#pest-panel-inner')) return NodeFilter.FILTER_REJECT;
+        // Preskočiti sam toggle dugme
+        if (parent?.id === 'script-toggle') return NodeFilter.FILTER_REJECT;
+        if (node.textContent.trim() === '') return NodeFilter.FILTER_SKIP;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let n;
+    while ((n = walker.nextNode())) {
+      const lat = n.textContent;
+      textCache.push({ node: n, lat, cyr: latinToCyrillic(lat) });
+    }
+
+    // Atributi — placeholder, aria-label, title
+    $$('[placeholder],[aria-label],[title]').forEach(el => {
+      if (el.id === 'script-toggle') return;
+      ['placeholder','aria-label','title'].forEach(attr => {
+        if (!el.hasAttribute(attr)) return;
+        const lat = el.getAttribute(attr);
+        attrCache.push({ el, attr, lat, cyr: latinToCyrillic(lat) });
+      });
+    });
+  }
+
+  function apply(toCyr) {
+    SCRIPT.mode = toCyr ? 'cyr' : 'lat';
+    textCache.forEach(({ node, lat, cyr }) => { node.textContent = toCyr ? cyr : lat; });
+    attrCache.forEach(({ el, attr, lat, cyr }) => { el.setAttribute(attr, toCyr ? cyr : lat); });
+    document.documentElement.lang = toCyr ? 'sr-Cyrl' : 'sr-Latn';
+    localStorage.setItem('ekogr_script', SCRIPT.mode);
+
+    const btn = $('#script-toggle');
+    if (btn) {
+      btn.textContent = toCyr ? 'Lat' : 'Ћир';
+      btn.setAttribute('aria-label', toCyr ? 'Промени писмо на латиницу' : 'Промени писмо на ћирилицу');
+    }
+  }
+
+  function init() {
+    collectStatic();
+    if (SCRIPT.mode === 'cyr') apply(true);
+
+    const btn = $('#script-toggle');
+    btn?.addEventListener('click', () => apply(SCRIPT.mode !== 'cyr'));
+  }
+
+  return { init };
+})();
+
+/* ============================================================
    1. NAVIGACIJA — sticky shrink + hamburger + scroll spy
    ============================================================ */
 (function initNav() {
@@ -411,16 +529,15 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     let msg = '';
 
     if (input.required && !val) {
-      msg = 'Ovo polje je obavezno.';
+      msg = t('Ovo polje je obavezno.');
     } else if (input.tagName === 'SELECT' && input.required && !val) {
-      msg = 'Izaberite vrstu usluge.';
+      msg = t('Izaberite vrstu usluge.');
     } else if (input.type === 'tel' && val) {
-      // Dozvoljavamo cifre, razmake, +, -, /, zagrade; min 6, max 20 znakova
-      if (!/^[\d\s\+\-\/\(\)]{6,20}$/.test(val)) msg = 'Unesite ispravan broj telefona (npr. 063 123 4567).';
+      if (!/^[\d\s\+\-\/\(\)]{6,20}$/.test(val)) msg = t('Unesite ispravan broj telefona (npr. 063 123 4567).');
     } else if (input.type === 'email' && val) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) msg = 'Unesite ispravnu email adresu.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) msg = t('Unesite ispravnu email adresu.');
     } else if (input.type === 'text' && input.required && val.length < 2) {
-      msg = 'Unesite najmanje 2 karaktera.';
+      msg = t('Unesite najmanje 2 karaktera.');
     }
 
     if (errorEl) {
@@ -475,14 +592,14 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
         success.focus();
       } else {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Zakaži besplatni uvid →';
-        alert('Greška pri slanju. Pozovite nas direktno: 013 333 033');
+        submitBtn.textContent = t('Zakaži besplatni uvid →');
+        alert(t('Greška pri slanju. Pozovite nas direktno: 013 333 033'));
       }
     })
     .catch(() => {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Zakaži besplatni uvid →';
-      alert('Nema internet veze. Pozovite nas direktno: 013 333 033');
+      submitBtn.textContent = t('Zakaži besplatni uvid →');
+      alert(t('Nema internet veze. Pozovite nas direktno: 013 333 033'));
     });
   });
 })();
@@ -644,6 +761,9 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     cta.className = 'pest-panel-cta';
     cta.innerHTML = `<a href="#kontakt" class="btn btn-primary">Zakažite tretman za ${d.naziv.toLowerCase()}</a>`;
     panelInner.appendChild(cta);
+
+    // Ako je ćirilica aktivna, transliteriši dinamički sadržaj
+    if (SCRIPT.mode === 'cyr') transliterateSubtree(panelInner);
   }
 
   function openPanel(key) {
@@ -719,4 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
     firstPanel.hidden = false;
     firstPanel.classList.add('active');
   }
+
+  // Pokretanje script toggle modula (mora biti poslednje, kad je DOM potpun)
+  ScriptToggle.init();
 });
