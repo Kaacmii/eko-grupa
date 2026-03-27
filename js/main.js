@@ -578,7 +578,7 @@ const ScriptToggle = (function() {
 
     const submitBtn = form.querySelector('[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.textContent = '⌛ Slanje...';
+    submitBtn.textContent = t('⌛ Šaljemo...');
 
     fetch(FORMSPREE, {
       method: 'POST',
@@ -587,9 +587,12 @@ const ScriptToggle = (function() {
     })
     .then(res => {
       if (res.ok) {
-        form.hidden = true;
-        success.hidden = false;
-        success.focus();
+        submitBtn.textContent = t('✅ Poslato!');
+        setTimeout(() => {
+          form.hidden = true;
+          success.hidden = false;
+          success.focus();
+        }, 600);
       } else {
         submitBtn.disabled = false;
         submitBtn.textContent = t('Zakaži besplatni uvid →');

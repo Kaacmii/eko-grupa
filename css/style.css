@@ -2010,6 +2010,228 @@ address { font-style: normal; }
 }
 
 /* ============================================================
+   BLOG STRANICA
+   ============================================================ */
+
+/* Aktivan nav link (blog.html) */
+.nav-link--active {
+  color: var(--green-main) !important;
+  font-weight: 700;
+}
+
+/* Blog hero */
+.blog-hero {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 100%);
+  padding: calc(var(--header-h) + var(--space-xl)) 0 var(--space-xl);
+  color: white;
+  text-align: center;
+}
+
+.blog-hero-inner .section-tag {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.blog-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: white;
+  margin: var(--space-sm) 0;
+  line-height: 1.2;
+}
+
+.blog-hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Blog content container */
+.blog-content {
+  background: var(--bg-white);
+}
+
+/* Pojedinačni članak */
+.blog-post {
+  max-width: 820px;
+  margin: 0 auto var(--space-xl);
+}
+
+.blog-post-header {
+  margin-bottom: var(--space-lg);
+}
+
+.blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.blog-category {
+  background: var(--green-light);
+  color: var(--green-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.blog-post-meta time {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.blog-post h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--green-dark);
+  line-height: 1.25;
+  margin-bottom: var(--space-sm);
+}
+
+.blog-post-lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  border-left: 3px solid var(--green-main);
+  padding-left: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.blog-post-body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+.blog-post-body p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: var(--space-md);
+}
+
+.blog-post-body ul {
+  margin: 0 0 var(--space-md) var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+.blog-post-body ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.blog-post-body ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green-main);
+  font-weight: 700;
+}
+
+/* CTA blok pri dnu članka */
+.blog-post-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  background: var(--bg-light);
+  border: 1px solid rgba(102,187,106,0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.blog-post-cta p {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--green-dark);
+  margin: 0;
+}
+
+/* Separator između članaka */
+.blog-divider {
+  border: none;
+  border-top: 1.5px solid rgba(102,187,106,0.15);
+  max-width: 820px;
+  margin: var(--space-xl) auto;
+}
+
+/* Donji CTA baner */
+.blog-bottom-cta {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 100%);
+  color: white;
+  text-align: center;
+}
+
+.blog-cta-inner h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--space-sm);
+}
+
+.blog-cta-inner p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+  line-height: 1.7;
+}
+
+.blog-cta-btns {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog-bottom-cta .btn-outline {
+  background: transparent;
+  color: white;
+  border-color: rgba(255,255,255,0.5);
+}
+
+.blog-bottom-cta .btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: white;
+}
+
+.btn-lg {
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .blog-post-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .blog-post-cta .btn { width: 100%; text-align: center; }
+  .blog-cta-btns .btn { width: 100%; }
+}
+
+/* ============================================================
    PRISTUPAČNOST — smanjena animacija
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
