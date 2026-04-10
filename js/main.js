@@ -14,7 +14,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
    ============================================================ */
 
 // Globalno stanje pisma — koriste ga i drugi moduli
-const SCRIPT = { mode: localStorage.getItem('ekogr_script') || 'cyr' };
+const SCRIPT = { mode: localStorage.getItem('ekogr_script_v2') || 'cyr' };
 
 // Vraća string u trenutnom pismu (koristi se za JS-generisane tekstove)
 function t(str) {
@@ -107,7 +107,7 @@ const ScriptToggle = (function() {
     textCache.forEach(({ node, lat, cyr }) => { node.textContent = toCyr ? cyr : lat; });
     attrCache.forEach(({ el, attr, lat, cyr }) => { el.setAttribute(attr, toCyr ? cyr : lat); });
     document.documentElement.lang = toCyr ? 'sr-Cyrl' : 'sr-Latn';
-    localStorage.setItem('ekogr_script', SCRIPT.mode);
+    localStorage.setItem('ekogr_script_v2', SCRIPT.mode);
 
     const btn = $('#script-toggle');
     if (btn) {
