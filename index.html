@@ -6,9 +6,11 @@
   <!-- Sprečava flash latinice: sakrij body dok JS ne prebaci na ćirilicu -->
   <script>(function(){if((localStorage.getItem('ekogr_script_v2')||'cyr')==='cyr')document.documentElement.classList.add('cyr-pending');}());</script>
   <style>.cyr-pending body{visibility:hidden}</style>
-  <meta name="description" content="Eko Grupa DDD Pančevo — profesionalna deratizacija i dezinsekcija u Pančevu i okolini. Suzbijanje glodara, bubašvaba, stenica, stršljenova i ostalih štetočina. Brza reakcija, ekološki bezbedna sredstva.">
+  <meta name="description" content="Eko Grupa DDD Pančevo — profesionalna deratizacija i dezinsekcija u Pančevu. Suzbijanje pacova, bubašvaba, stenica, insekata. Brza reakcija, ekološki bezbedna sredstva.">
   <meta name="keywords" content="deratizacija Pančevo, dezinsekcija Pančevo, suzbijanje štetočina, pacovi, bubašvabe, stenice, komarci, DDD usluge">
   <meta name="author" content="Eko Grupa DDD Pančevo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ekogrupapancevo.rs">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Eko Grupa DDD Pančevo — Deratizacija i Dezinsekcija">
@@ -16,6 +18,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.ekogrupapancevo.rs">
   <meta property="og:locale" content="sr_RS">
+  <meta property="og:image" content="https://www.ekogrupapancevo.rs/assets/images/logoEkoGR.jpeg">
+  <meta property="og:image:alt" content="Eko Grupa DDD Pančevo — deratizacija i dezinsekcija">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eko Grupa DDD Pančevo — Deratizacija i Dezinsekcija">
+  <meta name="twitter:description" content="Profesionalna deratizacija i dezinsekcija u Pančevu. Brza reakcija, ekološki bezbedna sredstva.">
+  <meta name="twitter:image" content="https://www.ekogrupapancevo.rs/assets/images/logoEkoGR.jpeg">
 
   <title>Eko Grupa DDD Pančevo — Deratizacija i Dezinsekcija</title>
 
@@ -23,6 +33,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+
+  <link rel="icon" href="assets/images/logoEkoGR.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="assets/images/logoEkoGR.jpeg">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -39,11 +52,23 @@
       "postalCode": "26000",
       "addressCountry": "RS"
     },
-    "telephone": "+381133330033",
+    "telephone": "+38113333033",
     "email": "dddekogrupa@yahoo.com",
     "url": "https://www.ekogrupapancevo.rs",
+    "image": "https://www.ekogrupapancevo.rs/assets/images/logoEkoGR.jpeg",
+    "openingHours": ["Mo-Fr 08:00-20:00", "Sa 09:00-15:00"],
     "areaServed": "Pančevo i okolina",
-    "serviceType": ["Deratizacija", "Dezinsekcija"]
+    "serviceType": ["Deratizacija", "Dezinsekcija"],
+    "sameAs": [
+      "https://www.facebook.com/dddekogrupa",
+      "https://www.instagram.com/ekogrupapancevo"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+381653330339",
+      "contactType": "customer service",
+      "availableLanguage": "Serbian"
+    }
   }
   </script>
 </head>
@@ -119,12 +144,8 @@
           <span>⏰ 24/7 Dostupni</span>
         </div>
         <h1 class="hero-title animate-on-scroll">
-          Vaš pouzdan partner<br>u zaštiti od štetočina
+          Profesionalna deratizacija i dezinsekcija<br>u Pančevu i okolini
         </h1>
-        <p class="hero-subtitle animate-on-scroll">
-          Profesionalna deratizacija i dezinsekcija u Pančevu i okolini.<br>
-          Ekološki bezbedna sredstva, brza reakcija.
-        </p>
         <div class="hero-cta animate-on-scroll">
           <a href="#kontakt" class="btn btn-primary">Zakažite tretman</a>
           <a href="#usluge" class="btn btn-outline">Naše usluge</a>
@@ -167,7 +188,7 @@
 
           <div class="about-image animate-on-scroll">
             <div class="about-img-placeholder" aria-label="Tim Eko Grupe na terenu">
-              <img src="assets/images/slikaEkoGr.jpeg" alt="Tim Eko Grupe na terenu" loading="lazy">
+              <img src="assets/images/slikaEkoGr.jpeg" alt="Tim Eko Grupe DDD Pančevo pri deratizaciji" loading="lazy">
             </div>
           </div>
         </div>
@@ -525,11 +546,11 @@
 
         <!-- Socijalne mreže -->
         <div class="social-links contact-social animate-on-scroll" aria-label="Pratite nas na društvenim mrežama">
-          <a href="https://www.facebook.com/dddekogrupa" class="social-btn" aria-label="Facebook stranica Eko Grupe Pančevo" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/dddekogrupa" class="social-btn" aria-label="Facebook stranica Eko Grupe Pančevo" rel="noopener noreferrer nofollow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             Facebook
           </a>
-          <a href="https://www.instagram.com/ekogrupapancevo?igsh=MTA4ZDhxaWI1Yzh0Ng==" class="social-btn" aria-label="Instagram profil Eko Grupe Pančevo" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/ekogrupapancevo?igsh=MTA4ZDhxaWI1Yzh0Ng==" class="social-btn" aria-label="Instagram profil Eko Grupe Pančevo" rel="noopener noreferrer nofollow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             Instagram
           </a>
@@ -553,10 +574,10 @@
         </a>
         <p>Profesionalna deratizacija i dezinsekcija u Pančevu i okolini.</p>
         <div class="footer-social" aria-label="Pratite nas">
-          <a href="https://www.facebook.com/dddekogrupa" class="footer-social-link" aria-label="Facebook" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/dddekogrupa" class="footer-social-link" aria-label="Facebook" rel="noopener noreferrer nofollow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <a href="https://www.instagram.com/ekogrupapancevo?igsh=MTA4ZDhxaWI1Yzh0Ng==" class="footer-social-link" aria-label="Instagram" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/ekogrupapancevo?igsh=MTA4ZDhxaWI1Yzh0Ng==" class="footer-social-link" aria-label="Instagram" rel="noopener noreferrer nofollow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
         </div>
