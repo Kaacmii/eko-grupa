@@ -1911,10 +1911,17 @@ address { font-style: normal; }
 }
 
 /* ============================================================
-   MOBILNI MENI (< 768px)
+   TABLET I MOBILNI MENI (< 1024px) — hamburger + dropdown
    ============================================================ */
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .hamburger { display: flex; }
+
+  .nav-phones { display: none; }
+
+  .nav-container {
+    gap: var(--space-sm);
+    padding: 0 var(--space-sm);
+  }
 
   .nav-links {
     display: none;
@@ -1937,6 +1944,10 @@ address { font-style: normal; }
     animation: slideDown 0.25s ease;
   }
 
+  .site-header.scrolled .nav-links {
+    top: var(--header-h-sm);
+  }
+
   @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -1950,8 +1961,19 @@ address { font-style: normal; }
 
   .nav-link:hover { background: var(--bg-light); }
 
-  .nav-phone {
-    display: none;
+  .script-toggle {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+  }
+}
+
+/* ============================================================
+   MOBILNI (<= 767px) — ostali elementi
+   ============================================================ */
+@media (max-width: 767px) {
+  .container {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
   }
 
   .services-tabs {
@@ -1961,29 +1983,9 @@ address { font-style: normal; }
 
   .tab-btn { justify-content: center; }
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .pests-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .hero-cta {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .info-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-form-wrap {
-    padding: var(--space-lg) var(--space-md);
   }
 
   .lightbox-prev { left: 0.5rem; }
