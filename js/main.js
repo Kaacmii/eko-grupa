@@ -14,7 +14,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
    ============================================================ */
 
 // Globalno stanje pisma — koriste ga i drugi moduli
-const SCRIPT = { mode: localStorage.getItem('ekogr_script') || 'lat' };
+const SCRIPT = { mode: localStorage.getItem('ekogr_script') || 'cyr' };
 
 // Vraća string u trenutnom pismu (koristi se za JS-generisane tekstove)
 function t(str) {
@@ -114,11 +114,15 @@ const ScriptToggle = (function() {
       btn.textContent = toCyr ? 'Lat' : 'Ћир';
       btn.setAttribute('aria-label', toCyr ? 'Промени писмо на латиницу' : 'Промени писмо на ћирилицу');
     }
+
+    // Ukloni pending klasu (sprečava flash latinice pri inicijalnom učitavanju)
+    document.documentElement.classList.remove('cyr-pending');
   }
 
   function init() {
     collectStatic();
-    if (SCRIPT.mode === 'cyr') apply(true);
+    // Uvek pozovi apply — čak i za lat, da se ukloni cyr-pending klasa
+    apply(SCRIPT.mode === 'cyr');
 
     const btn = $('#script-toggle');
     btn?.addEventListener('click', () => apply(SCRIPT.mode !== 'cyr'));
