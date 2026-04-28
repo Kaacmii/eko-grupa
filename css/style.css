@@ -239,6 +239,9 @@ address { font-style: normal; }
 .nav-logo {
   flex-shrink: 0;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .logo-img { height: 44px; width: auto; }
@@ -1735,11 +1738,11 @@ address { font-style: normal; }
   text-decoration: none;
 }
 
-.footer-logo-fallback .logo-text {
+.footer-logo-text {
   color: white;
 }
 
-.footer-logo-fallback .logo-sub {
+.footer-logo-text .logo-sub {
   color: var(--green-light);
 }
 
