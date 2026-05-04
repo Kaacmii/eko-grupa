@@ -451,12 +451,13 @@ address { font-style: normal; }
   padding-bottom: var(--space-xl);
 }
 
-/* SVG bubice u pozadini — plutaju */
+/* SVG bubice u pozadini — unutar hero-animals, samo desna kolona */
 .hero-pests {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .hero-pest {
@@ -504,6 +505,24 @@ address { font-style: normal; }
 
 .hero-animal {
   position: absolute;
+  z-index: 2;
+}
+
+/* Wrapper za mix-blend-mode (fix halo) bez konflikta sa filter */
+.hero-animal-wrap {
+  position: absolute;
+  mix-blend-mode: multiply;
+  z-index: 2;
+}
+
+.hero-animal-wrap--buva {
+  right: 10%;
+  top: 4%;
+}
+
+.hero-animal-wrap .hero-animal {
+  position: relative;
+  top: auto; right: auto; bottom: auto; left: auto;
 }
 
 /* Senke prilagođene svakoj životinji */
@@ -517,8 +536,6 @@ address { font-style: normal; }
 
 .hero-animal--buva {
   height: clamp(100px, 11vw, 155px);
-  right: 10%;
-  top: 4%;
   transform: rotate(8deg);
   filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.55));
 }

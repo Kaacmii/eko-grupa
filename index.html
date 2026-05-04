@@ -116,22 +116,6 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <!-- Animirane SVG bubice u pozadini -->
-      <div class="hero-pests" aria-hidden="true">
-        <div class="hero-pest hero-pest--cockroach">
-          <img src="assets/svg/cockroach.svg" alt="" width="80" height="88" loading="lazy">
-        </div>
-        <div class="hero-pest hero-pest--rat">
-          <img src="assets/svg/rat.svg" alt="" width="96" height="64" loading="lazy">
-        </div>
-        <div class="hero-pest hero-pest--mosquito">
-          <img src="assets/svg/mosquito.svg" alt="" width="72" height="72" loading="lazy">
-        </div>
-        <div class="hero-pest hero-pest--ant">
-          <img src="assets/svg/ant.svg" alt="" width="60" height="60" loading="lazy">
-        </div>
-      </div>
-
       <div class="container hero-inner">
         <div class="hero-content">
           <div class="hero-badge animate-on-scroll" aria-label="Dostupni 24 sata, 7 dana u nedelji">
@@ -151,6 +135,21 @@
         </div>
 
         <div class="hero-animals" aria-hidden="true">
+          <!-- SVG bubice u pozadini — samo desna kolona -->
+          <div class="hero-pests">
+            <div class="hero-pest hero-pest--cockroach">
+              <img src="assets/svg/cockroach.svg" alt="" width="80" height="88" loading="lazy">
+            </div>
+            <div class="hero-pest hero-pest--rat">
+              <img src="assets/svg/rat.svg" alt="" width="96" height="64" loading="lazy">
+            </div>
+            <div class="hero-pest hero-pest--mosquito">
+              <img src="assets/svg/mosquito.svg" alt="" width="72" height="72" loading="lazy">
+            </div>
+            <div class="hero-pest hero-pest--ant">
+              <img src="assets/svg/ant.svg" alt="" width="60" height="60" loading="lazy">
+            </div>
+          </div>
           <!-- Listovi -->
           <svg class="hero-leaf hero-leaf--1" viewBox="0 0 70 90" xmlns="http://www.w3.org/2000/svg"><path d="M35,85 C35,85 4,58 4,30 C4,10 18,2 35,2 C52,2 66,10 66,30 C66,58 35,85 35,85Z" fill="#3d7a2e"/><line x1="35" y1="85" x2="35" y2="4" stroke="#2a5a1e" stroke-width="1.5"/><line x1="35" y1="28" x2="16" y2="18" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="42" x2="12" y2="37" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="56" x2="14" y2="53" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="28" x2="54" y2="18" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="42" x2="58" y2="37" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="56" x2="56" y2="53" stroke="#2a5a1e" stroke-width="1"/></svg>
           <svg class="hero-leaf hero-leaf--2" viewBox="0 0 70 90" xmlns="http://www.w3.org/2000/svg"><path d="M35,85 C35,85 4,58 4,30 C4,10 18,2 35,2 C52,2 66,10 66,30 C66,58 35,85 35,85Z" fill="#4a8c38"/><line x1="35" y1="85" x2="35" y2="4" stroke="#2a5a1e" stroke-width="1.5"/><line x1="35" y1="28" x2="16" y2="18" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="42" x2="12" y2="37" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="56" x2="14" y2="53" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="28" x2="54" y2="18" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="42" x2="58" y2="37" stroke="#2a5a1e" stroke-width="1"/><line x1="35" y1="56" x2="56" y2="53" stroke="#2a5a1e" stroke-width="1"/></svg>
@@ -160,7 +159,9 @@
 
           <!-- Životinje -->
           <img class="hero-animal hero-animal--bubashvaba" src="assets/images/bubashvaba.png" alt="">
-          <img class="hero-animal hero-animal--buva"       src="assets/images/buva.png"       alt="">
+          <div class="hero-animal-wrap hero-animal-wrap--buva">
+            <img class="hero-animal hero-animal--buva" src="assets/images/buva.png" alt="">
+          </div>
           <img class="hero-animal hero-animal--golub"      src="assets/images/golub.png"      alt="">
           <img class="hero-animal hero-animal--mrav"       src="assets/images/mrav.png"       alt="">
           <img class="hero-animal hero-animal--osa"        src="assets/images/osa.png"        alt="">
