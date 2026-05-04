@@ -434,56 +434,85 @@ address { font-style: normal; }
   z-index: 1;
 }
 
-/* SVG štetočine u hero-u */
-.hero-pests {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-pest {
-  position: absolute;
-  opacity: 0.18;
-  filter: brightness(3);
-}
-
-.hero-pest--cockroach {
-  top: 15%;
-  right: 8%;
-  animation: pestFloat 6s ease-in-out infinite;
-}
-
-.hero-pest--rat {
-  bottom: 25%;
-  right: 18%;
-  animation: pestFloat 8s ease-in-out infinite 1s;
-}
-
-.hero-pest--mosquito {
-  top: 60%;
-  left: 5%;
-  animation: pestFloat 7s ease-in-out infinite 0.5s;
-}
-
-.hero-pest--ant {
-  top: 30%;
-  left: 10%;
-  animation: pestFloat 5s ease-in-out infinite 2s;
-}
-
-@keyframes pestFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33%       { transform: translateY(-12px) rotate(3deg); }
-  66%       { transform: translateY(6px) rotate(-2deg); }
+/* Hero layout */
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: calc(100svh - var(--header-h));
+  width: 100%;
+  gap: var(--space-lg);
 }
 
 .hero-content {
-  position: relative;
-  z-index: 3;
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
-  max-width: 760px;
+}
+
+/* Životinje desno */
+.hero-animals {
+  position: relative;
+  height: 560px;
+  pointer-events: none;
+}
+
+.hero-animal {
+  position: absolute;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.55));
+}
+
+.hero-animal--bubashvaba {
+  height: clamp(160px, 18vw, 260px);
+  left: 8%;
+  top: 12%;
+  transform: rotate(-12deg) scaleX(-1);
+  animation: animalFloat 7s ease-in-out infinite;
+}
+
+.hero-animal--golub {
+  height: clamp(190px, 22vw, 300px);
+  right: 0;
+  top: 5%;
+  animation: animalFloat 9s ease-in-out infinite 1.2s;
+}
+
+.hero-animal--mis {
+  height: clamp(160px, 19vw, 270px);
+  right: 2%;
+  bottom: 5%;
+  animation: animalFloat 8s ease-in-out infinite 0.5s;
+}
+
+.hero-animal--mrav {
+  height: clamp(120px, 14vw, 200px);
+  left: 2%;
+  bottom: 8%;
+  transform: rotate(18deg);
+  animation: animalFloat 6s ease-in-out infinite 2s;
+}
+
+.hero-animal--osa {
+  height: clamp(90px, 10vw, 150px);
+  right: 28%;
+  bottom: 22%;
+  transform: rotate(-20deg);
+  animation: animalFloat 5s ease-in-out infinite 0.8s;
+}
+
+.hero-animal--buva {
+  height: clamp(70px, 8vw, 120px);
+  left: 42%;
+  top: 4%;
+  transform: rotate(12deg);
+  animation: animalFloat 6.5s ease-in-out infinite 1.5s;
+}
+
+@keyframes animalFloat {
+  0%, 100% { transform-origin: center; translate: 0 0; }
+  40%       { translate: 0 -10px; }
+  70%       { translate: 0 5px; }
 }
 
 .hero-badge {
@@ -1970,6 +1999,18 @@ address { font-style: normal; }
   }
 }
 
+/* Tablet hero — životinje vidljive ali manje */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .hero-animals { height: 420px; }
+
+  .hero-animal--bubashvaba { height: 140px; }
+  .hero-animal--golub      { height: 180px; }
+  .hero-animal--mis        { height: 150px; }
+  .hero-animal--mrav       { height: 110px; }
+  .hero-animal--osa        { height: 80px; }
+  .hero-animal--buva       { height: 65px; }
+}
+
 /* ============================================================
    MOBILNI (<= 767px) — ostali elementi
    ============================================================ */
@@ -1985,6 +2026,17 @@ address { font-style: normal; }
   }
 
   .tab-btn { justify-content: center; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: var(--space-lg);
+    padding-bottom: 100px;
+  }
+
+  .hero-animals {
+    display: none;
+  }
 
   .hero-cta {
     flex-direction: column;
