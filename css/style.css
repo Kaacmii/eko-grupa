@@ -546,9 +546,9 @@ address { font-style: normal; }
 }
 
 .hero-animal--golub {
-  height: clamp(240px, 27vw, 370px);
+  height: clamp(220px, 25vw, 340px);
   right: 0;
-  top: 18%;
+  top: 5%;
   transform: scaleX(-1);
   filter: drop-shadow(0 18px 22px rgba(0,0,0,0.5));
 }
@@ -569,7 +569,7 @@ address { font-style: normal; }
 
 .hero-animal--mis {
   height: clamp(210px, 24vw, 330px);
-  right: 2%;
+  right: 18%;
   bottom: 5%;
   transform: scaleX(-1);
   filter: drop-shadow(0 22px 18px rgba(0,0,0,0.6));
@@ -2306,7 +2306,7 @@ address { font-style: normal; }
 /* Info kartice — 3 u redu, bez mape */
 .contact-info-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
