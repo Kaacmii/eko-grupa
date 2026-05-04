@@ -467,26 +467,26 @@ address { font-style: normal; }
 }
 
 .hero-pest--cockroach {
-  top: 15%;
-  right: 8%;
+  top: 3%;
+  left: 50%;
   animation: pestFloat 6s ease-in-out infinite;
 }
 
 .hero-pest--rat {
-  bottom: 25%;
-  right: 18%;
+  top: 30%;
+  left: 48%;
   animation: pestFloat 8s ease-in-out infinite 1s;
 }
 
 .hero-pest--mosquito {
-  top: 60%;
-  left: 5%;
+  top: 55%;
+  left: 10%;
   animation: pestFloat 7s ease-in-out infinite 0.5s;
 }
 
 .hero-pest--ant {
-  top: 30%;
-  left: 10%;
+  top: 12%;
+  left: 3%;
   animation: pestFloat 5s ease-in-out infinite 2s;
 }
 
@@ -520,6 +520,11 @@ address { font-style: normal; }
   top: 4%;
 }
 
+.hero-animal-wrap--osa {
+  left: 5%;
+  bottom: 8%;
+}
+
 .hero-animal-wrap .hero-animal {
   position: relative;
   top: auto; right: auto; bottom: auto; left: auto;
@@ -536,7 +541,7 @@ address { font-style: normal; }
 
 .hero-animal--buva {
   height: clamp(100px, 11vw, 155px);
-  transform: rotate(8deg);
+  transform: rotate(8deg) scaleX(-1);
   filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.55));
 }
 
@@ -544,6 +549,7 @@ address { font-style: normal; }
   height: clamp(240px, 27vw, 370px);
   right: 0;
   top: 18%;
+  transform: scaleX(-1);
   filter: drop-shadow(0 18px 22px rgba(0,0,0,0.5));
 }
 
@@ -551,14 +557,12 @@ address { font-style: normal; }
   height: clamp(160px, 18vw, 250px);
   left: 30%;
   bottom: 10%;
-  transform: rotate(8deg);
+  transform: rotate(8deg) scaleX(-1);
   filter: drop-shadow(0 18px 12px rgba(0,0,0,0.6));
 }
 
 .hero-animal--osa {
   height: clamp(120px, 14vw, 190px);
-  left: 5%;
-  bottom: 8%;
   transform: rotate(-8deg);
   filter: drop-shadow(0 14px 10px rgba(0,0,0,0.55));
 }
@@ -567,6 +571,7 @@ address { font-style: normal; }
   height: clamp(210px, 24vw, 330px);
   right: 2%;
   bottom: 5%;
+  transform: scaleX(-1);
   filter: drop-shadow(0 22px 18px rgba(0,0,0,0.6));
 }
 
