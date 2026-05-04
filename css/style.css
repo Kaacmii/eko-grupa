@@ -460,7 +460,6 @@ address { font-style: normal; }
 
 .hero-animal {
   position: absolute;
-  mix-blend-mode: multiply;
   filter: drop-shadow(0 12px 32px rgba(0,0,0,0.55));
 }
 
