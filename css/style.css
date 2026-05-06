@@ -447,6 +447,8 @@ address { font-style: normal; }
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
@@ -467,26 +469,26 @@ address { font-style: normal; }
 }
 
 .hero-pest--cockroach {
-  top: 3%;
-  left: 50%;
+  top: 5%;
+  left: 38%;
   animation: pestFloat 6s ease-in-out infinite;
 }
 
 .hero-pest--rat {
-  top: 30%;
-  left: 48%;
+  top: 34%;
+  left: 75%;
   animation: pestFloat 8s ease-in-out infinite 1s;
 }
 
 .hero-pest--mosquito {
-  top: 55%;
-  left: 10%;
+  top: 54%;
+  left: 57%;
   animation: pestFloat 7s ease-in-out infinite 0.5s;
 }
 
 .hero-pest--ant {
-  top: 12%;
-  left: 3%;
+  top: 17%;
+  left: 82%;
   animation: pestFloat 5s ease-in-out infinite 2s;
 }
 
@@ -499,7 +501,7 @@ address { font-style: normal; }
 /* Realne životinje desno — statične */
 .hero-animals {
   position: relative;
-  height: 600px;
+  height: 680px;
   pointer-events: none;
 }
 
@@ -516,13 +518,18 @@ address { font-style: normal; }
 }
 
 .hero-animal-wrap--buva {
-  right: 10%;
+  right: 2%;
+  top: 1%;
+}
+
+.hero-animal-wrap--strsljen {
+  left: 45%;
   top: 4%;
 }
 
 .hero-animal-wrap--osa {
-  left: 5%;
-  bottom: 8%;
+  left: 0%;
+  bottom: 4%;
 }
 
 .hero-animal-wrap .hero-animal {
@@ -532,62 +539,63 @@ address { font-style: normal; }
 
 /* Senke prilagođene svakoj životinji */
 .hero-animal--bubashvaba {
-  height: clamp(210px, 23vw, 320px);
-  left: 12%;
-  top: 4%;
-  transform: rotate(-18deg) scaleX(-1);
+  height: clamp(205px, 22vw, 265px);
+  left: 2%;
+  top: 2%;
+  transform: rotate(-15deg) scaleX(-1);
   filter: drop-shadow(4px 10px 14px rgba(0,0,0,0.6));
 }
 
 .hero-animal--buva {
-  height: clamp(100px, 11vw, 155px);
+  height: clamp(100px, 11vw, 145px);
   transform: rotate(8deg) scaleX(-1);
   filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.55));
 }
 
 .hero-animal--golub {
-  height: clamp(220px, 25vw, 340px);
+  height: clamp(160px, 18vw, 230px);
   right: 0;
-  top: 5%;
+  top: 20%;
   transform: scaleX(-1);
   filter: drop-shadow(0 18px 22px rgba(0,0,0,0.5));
 }
 
 .hero-animal--mrav {
-  height: clamp(160px, 18vw, 250px);
-  left: 30%;
-  bottom: 10%;
-  transform: rotate(8deg) scaleX(-1);
+  height: clamp(190px, 20vw, 245px);
+  left: 22%;
+  bottom: 8%;
+  transform: rotate(5deg) scaleX(-1);
   filter: drop-shadow(0 18px 12px rgba(0,0,0,0.6));
 }
 
 .hero-animal--osa {
-  height: clamp(120px, 14vw, 190px);
+  height: clamp(100px, 11vw, 135px);
   transform: rotate(-8deg);
   filter: drop-shadow(0 14px 10px rgba(0,0,0,0.55));
 }
 
+.hero-animal--strsljen {
+  height: clamp(85px, 10vw, 130px);
+  transform: rotate(-5deg) scaleX(-1);
+  filter: drop-shadow(2px 8px 10px rgba(0,0,0,0.55));
+}
+
+.hero-animal--stenica {
+  height: clamp(150px, 16vw, 205px);
+  left: 34%;
+  top: 42%;
+  transform: rotate(10deg) scaleX(-1);
+  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.5));
+}
+
 .hero-animal--mis {
-  height: clamp(210px, 24vw, 330px);
-  right: 18%;
-  bottom: 5%;
+  height: clamp(180px, 20vw, 250px);
+  right: 2%;
+  bottom: 4%;
   transform: scaleX(-1);
   filter: drop-shadow(0 22px 18px rgba(0,0,0,0.6));
 }
 
-/* Listovi */
-.hero-leaf {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.92;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-}
-
-.hero-leaf--1 { width: 62px; top: 32%;  left: 44%;  transform: rotate(-35deg); }
-.hero-leaf--2 { width: 50px; top: 52%;  right: 36%; transform: rotate(25deg);  }
-.hero-leaf--3 { width: 44px; bottom: 32%; right: 42%; transform: rotate(-55deg); }
-.hero-leaf--4 { width: 38px; top: 14%;  left: 56%;  transform: rotate(18deg);  }
-.hero-leaf--5 { width: 55px; bottom: 48%; left: 1%;  transform: rotate(-70deg); }
 
 @keyframes animalFloat {
   0%, 100% { translate: 0 0; }
@@ -811,13 +819,16 @@ address { font-style: normal; }
 .service-card-large:hover { box-shadow: var(--shadow-md); }
 
 .service-card-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg-white);
   border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  min-height: 160px;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.service-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .service-card-body h3 {
@@ -2083,12 +2094,14 @@ address { font-style: normal; }
 @media (min-width: 768px) and (max-width: 1100px) {
   .hero-animals { height: 420px; }
 
-  .hero-animal--bubashvaba { height: 140px; }
-  .hero-animal--golub      { height: 180px; }
-  .hero-animal--mis        { height: 150px; }
-  .hero-animal--mrav       { height: 110px; }
-  .hero-animal--osa        { height: 80px; }
-  .hero-animal--buva       { height: 65px; }
+  .hero-animal--bubashvaba { height: 130px; }
+  .hero-animal--golub      { height: 150px; }
+  .hero-animal--mis        { height: 140px; }
+  .hero-animal--mrav       { height: 120px; }
+  .hero-animal--osa        { height: 75px; }
+  .hero-animal--buva       { height: 55px; }
+  .hero-animal--strsljen   { height: 65px; }
+  .hero-animal--stenica    { height: 80px; }
 }
 
 /* ============================================================
@@ -2120,7 +2133,7 @@ address { font-style: normal; }
 
   .hero-cta {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .lightbox-prev { left: 0.5rem; }
@@ -2396,6 +2409,22 @@ address { font-style: normal; }
   padding: calc(var(--header-h) + var(--space-xl)) 0 var(--space-xl);
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32zm0-92L0 34v34l28 18 28-18V34z' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blog-hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .blog-hero-inner .section-tag {
@@ -2537,6 +2566,17 @@ address { font-style: normal; }
   font-size: 1rem;
   color: var(--green-dark);
   margin: 0;
+}
+
+.blog-post-cta .btn-outline {
+  color: var(--green-dark);
+  border-color: var(--green-main);
+}
+
+.blog-post-cta .btn-outline:hover {
+  background: var(--green-main);
+  color: white;
+  border-color: var(--green-main);
 }
 
 /* Separator između članaka */
