@@ -2546,6 +2546,47 @@ address { font-style: normal; }
   font-weight: 700;
 }
 
+/* Inline slike unutar blog članaka */
+.blog-inline-media {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-lg);
+  align-items: start;
+  margin-bottom: var(--space-lg);
+}
+
+.blog-inline-media--left {
+  grid-template-columns: 300px 1fr;
+}
+
+.blog-inline-media h3 {
+  margin-top: 0;
+}
+
+.blog-inline-figure {
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-inline-figure img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .blog-inline-media,
+  .blog-inline-media--left {
+    grid-template-columns: 1fr;
+  }
+  .blog-inline-figure img {
+    height: 200px;
+  }
+}
+
 /* CTA blok pri dnu članka */
 .blog-post-cta {
   display: flex;
