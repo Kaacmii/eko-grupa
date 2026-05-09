@@ -13,6 +13,8 @@
   /* Akcentne boje */
   --accent-red:   #C62828;
   --accent-gold:  #F9A825;
+  --ddd-yellow:   #FFD600;
+  --ddd-cyan:     #29B6F6;
 
   /* Dopunske */
   --bg-light:     #F1F8E9;
@@ -492,6 +494,16 @@ address { font-style: normal; }
   animation: pestFloat 5s ease-in-out infinite 2s;
 }
 
+.hero-pest--bedbug {
+  top: 54%;
+  left: 52%;
+  animation: pestFloat 7s ease-in-out infinite 1.5s;
+}
+
+@media (max-width: 1024px) {
+  .hero-pest--bedbug { display: none; }
+}
+
 @keyframes pestFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   33%       { transform: translateY(-12px) rotate(3deg); }
@@ -632,6 +644,49 @@ address { font-style: normal; }
   color: rgba(255,255,255,0.82);
   line-height: 1.7;
   margin-bottom: var(--space-lg);
+}
+
+/* DDD logotip u hero naslovu */
+.hero-ddd {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+.ddd-block {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.05em;
+}
+.ddd-letter {
+  font-size: 4.3em;
+  font-weight: 900;
+  color: var(--accent-red);
+  line-height: 0.84;
+}
+.ddd-words {
+  display: flex;
+  flex-direction: column;
+}
+.ddd-word {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.ddd-word--zuta   { color: var(--ddd-yellow); }
+.ddd-word--crvena { color: var(--accent-red); }
+.ddd-word--plava  { color: var(--ddd-cyan); }
+
+/* Ćirilično Д ima nožice ispod baseline — malo smanjiti da nožice dođu tačno do ivice */
+:lang(sr-Cyrl) .ddd-letter {
+  font-size: 4.0em;
+}
+.ddd-location {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  margin-top: var(--space-sm);
 }
 
 .hero-cta {
@@ -1564,6 +1619,7 @@ address { font-style: normal; }
   font-size: 1rem;
   padding: 0.7rem 1.4rem;
   text-align: center;
+  justify-content: center;
   white-space: nowrap;
 }
 
@@ -1614,12 +1670,17 @@ address { font-style: normal; }
 @media (max-width: 767px) {
   .call-cta-card {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+  .call-cta-left {
+    align-items: center;
   }
   .call-cta-numbers {
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .call-cta-btn { flex: 1; }
   .nav-phone--mobile { display: none; }
@@ -1832,9 +1893,26 @@ address { font-style: normal; }
    FOOTER
    ============================================================ */
 .site-footer {
-  background: var(--green-dark);
+  position: relative;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(46,125,50,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(27,94,32,0.8) 0%, transparent 50%),
+    linear-gradient(135deg, var(--green-dark) 0%, #2d5016 50%, #1a3a0f 100%);
   color: rgba(255,255,255,0.8);
   padding: var(--space-xl) 0 0;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32zm0-92L0 34v34l28 18 28-18V34z' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.site-footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-grid {
@@ -2121,15 +2199,68 @@ address { font-style: normal; }
   .tab-btn { justify-content: center; }
 
   .hero-inner {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     min-height: auto;
-    padding-top: var(--space-lg);
-    padding-bottom: 100px;
+    padding-top: 165px;
+    padding-bottom: var(--space-lg);
   }
 
+  .hero-pests { display: none; }
+
   .hero-animals {
-    display: none;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3rem;
+    padding: var(--space-sm) var(--space-sm) 0;
   }
+
+  .hero-animal {
+    position: static !important;
+    transform: none !important;
+    height: 135px !important;
+    width: auto !important;
+  }
+
+  .hero-animal-wrap {
+    position: static !important;
+  }
+
+  /* Sakrivene na mobilnom — prikazuju se samo bubashvaba, strsljen, mis */
+  .hero-animal--golub,
+  .hero-animal--stenica,
+  .hero-animal--mrav,
+  .hero-animal-wrap--buva,
+  .hero-animal-wrap--osa { display: none; }
+
+  .hero-content {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-title {
+    order: 1;
+    margin-bottom: 0;
+  }
+  .hero-ddd { font-size: clamp(1.3rem, 7vw, 1.7rem); }
+
+  .hero-badge {
+    order: 2;
+    align-self: flex-end;
+    margin: 0.65rem 0;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .hero-cta { order: 3; }
+  .hero-badges { order: 4; }
 
   .hero-cta {
     flex-direction: column;
